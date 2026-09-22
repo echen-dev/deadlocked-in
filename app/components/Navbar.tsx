@@ -39,9 +39,9 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? activeStyles : baseStyles
               }
-              to="/blog"
+              to="/guides"
             >
-              Blog
+              Guides
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -90,10 +90,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
-            to="/blog"
-            onClick={() => setMenuOpen(false)}
+            to="/guides"
           >
-            Blog
+            Guides
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
