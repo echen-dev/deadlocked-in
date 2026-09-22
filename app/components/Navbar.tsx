@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { NavLink } from "react-router";
-import { FaSkull } from "react-icons/fa";
+import { FaSkull, FaTimes, FaBars } from "react-icons/fa";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const baseStyles = "transition hover:text-blue-400";
   const activeStyles = "text-blue-400 font-semibold";
   return (
@@ -59,7 +61,56 @@ const Navbar = () => {
             </NavLink>
           </div>
         </div>
+
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-blue-400 text-xl cursor-pointer"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
+      {/*Mobile Navigation*/}
+      {menuOpen && (
+        <div className="md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 space-y-2 space-x-4 text-center">
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
+            to="/"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
+            to="/heroes"
+            onClick={() => setMenuOpen(false)}
+          >
+            Heroes
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
+            to="/blog"
+            onClick={() => setMenuOpen(false)}
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
+            to="/about"
+            onClick={() => setMenuOpen(false)}
+          >
+            About
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 };
