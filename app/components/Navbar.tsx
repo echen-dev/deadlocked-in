@@ -91,6 +91,7 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
             to="/guides"
+            onClick={() => setMenuOpen(false)}
           >
             Guides
           </NavLink>
