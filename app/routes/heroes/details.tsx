@@ -37,13 +37,18 @@ const HeroDetailsPage = ({ loaderData }: Route.ComponentProps) => {
         </div>
         <div>
           <h1 className="text-3xl font-bold text-blue-400 mb-4">{hero.name}</h1>
+          <p className="text-sm text-gray-300 mb-4">Role: {hero.role}</p>
           <p className="text-sm text-gray-300 mb-4">
             Release Date: {new Date(hero.releaseDate).toLocaleDateString()}
           </p>
-          <p className="text-gray-200 mb-6">{hero.description}</p>
+          <div className="flex gap-2 mb-6">
+            {hero.description.split(" ").map((item) => (
+              <div className="bg-blue-600 rounded px-2">{item}</div>
+            ))}
+          </div>
           <Link
             to={"/guides"}
-            className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition"
+            className="inline-block text-white bg-blue-500 hover:bg-blue-700 px-6 py-2 rounded transition"
           >
             <span className="flex items-center gap-2">
               View {hero.name} Guides <FaArrowRight />
