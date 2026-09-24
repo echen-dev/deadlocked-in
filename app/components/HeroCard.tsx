@@ -18,8 +18,10 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
             Release Date: {new Date(hero.releaseDate).toLocaleDateString()}
           </div>
           <div className="flex gap-2">
-            {hero.description.split(" ").map((item) => (
-              <div className="bg-blue-600 rounded px-2">{item}</div>
+            {hero.description.split(" ").map((descriptor) => (
+              <div key={descriptor} className="bg-blue-600 rounded px-2">
+                {descriptor}
+              </div>
             ))}
           </div>
         </div>

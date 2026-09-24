@@ -42,8 +42,10 @@ const HeroDetailsPage = ({ loaderData }: Route.ComponentProps) => {
             Release Date: {new Date(hero.releaseDate).toLocaleDateString()}
           </p>
           <div className="flex gap-2 mb-6">
-            {hero.description.split(" ").map((item) => (
-              <div className="bg-blue-600 rounded px-2">{item}</div>
+            {hero.description.split(" ").map((descriptor) => (
+              <div key={descriptor} className="bg-blue-600 rounded px-2">
+                {descriptor}
+              </div>
             ))}
           </div>
           <Link

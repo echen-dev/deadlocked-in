@@ -15,14 +15,37 @@ export async function loader({
 const HeroesPage = ({ loaderData }: Route.ComponentProps) => {
   const { heroes } = loaderData as { heroes: Hero[] };
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRole, setSelectedRole] = useState("All");
   const heroesPerPage = 6;
-  const totalPages = Math.ceil(heroes.length / heroesPerPage);
+
+  const roles = ["All", ...new Set(heroes.map((hero) => hero.role))];
+
+  const filteredHeroes =
+    selectedRole === "All"
+      ? heroes
+      : heroes.filter((hero) => hero.role === selectedRole);
+
+  const totalPages = Math.ceil(filteredHeroes.length / heroesPerPage);
   const indexOfLast = currentPage * heroesPerPage;
   const indexOfFirst = indexOfLast - heroesPerPage;
-  const currentHeroes = heroes.slice(indexOfFirst, indexOfLast);
+  const currentHeroes = filteredHeroes.slice(indexOfFirst, indexOfLast);
   return (
     <>
       <h2 className="text-3xl text-white font-bold mb-8">Heroes</h2>
+      <div className="flex flex-wrap gap-2 mb-8">
+        {roles.map((role) => (
+          <button
+            key={role}
+            onClick={() => {
+              setSelectedRole(role);
+              setCurrentPage(1);
+            }}
+            className={`px-3 py-1 rounded text-sm cursor-pointer ${role === selectedRole ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200"}`}
+          >
+            {role}
+          </button>
+        ))}
+      </div>
       <div className="grid gap-6 sm:grid-cols-2">
         {currentHeroes.map((hero) => (
           <HeroCard key={hero.id} hero={hero} />
