@@ -3,6 +3,14 @@ import type { Route } from "./+types/index";
 import type { Hero } from "~/types";
 import HeroCard from "~/components/HeroCard";
 import Pagination from "~/components/Pagination";
+import { AnimatePresence, motion } from "motion/react";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Deadlocked In | Heroes" },
+    { name: "description", content: "Learn more about the heroes of Deadlock" },
+  ];
+}
 
 export async function loader({
   request,
@@ -46,11 +54,18 @@ const HeroesPage = ({ loaderData }: Route.ComponentProps) => {
           </button>
         ))}
       </div>
-      <div className="grid gap-6 sm:grid-cols-2">
-        {currentHeroes.map((hero) => (
-          <HeroCard key={hero.id} hero={hero} />
-        ))}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          layout="preserve-aspect"
+          className="grid gap-6 sm:grid-cols-2"
+        >
+          {currentHeroes.map((hero) => (
+            <motion.div key={hero.id} layout="preserve-aspect">
+              <HeroCard hero={hero} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
