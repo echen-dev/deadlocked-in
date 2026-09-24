@@ -7,13 +7,9 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
       className="block transform transition duration-300 hover:scale-105"
       to={`/heroes/${hero.id}`}
     >
-      <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-sm transition hover:shadow-md">
-        <img
-          src={hero.image}
-          alt={hero.name}
-          className="w-full h-40 object-cover"
-        />
-        <div className="p-5">
+      <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-sm transition hover:shadow-md flex justify-around">
+        <img src={hero.image} alt={hero.name} className=" h-50 object-cover" />
+        <div className="p-5 my-auto">
           <h3 className="text-3xl font-semibold text-blue-400 mb-1">
             {hero.name}
           </h3>
