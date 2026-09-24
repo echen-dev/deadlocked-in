@@ -28,7 +28,7 @@
       "image": "/images/bebop.png",
       "url": "heroes/bebop",
       "releaseDate": "2024-04-24",
-      "featured": false
+      "featured": true
     },
     {
       "id": 4,
@@ -58,7 +58,7 @@
       "image": "/images/celeste.png",
       "url": "heroes/celeste",
       "releaseDate": "2026-02-09",
-      "featured": false
+      "featured": true
     },
     {
       "id": 7,

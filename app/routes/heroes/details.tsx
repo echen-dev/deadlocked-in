@@ -7,7 +7,9 @@ export async function clientLoader({
   request,
   params,
 }: Route.ClientLoaderArgs): Promise<Hero> {
-  const res = await fetch(`http://localhost:8000/heroes/${params.id}`);
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/heroes/${params.id}`,
+  );
   if (!res.ok) throw new Response("Hero not found", { status: 404 });
   const hero: Hero = await res.json();
   return hero;
