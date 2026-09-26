@@ -27,6 +27,7 @@ const Navbar = () => {
           <div className="space-x-4 text-sm text-gray-300">
             {navLinks.map((item) => (
               <NavLink
+                key={item.label}
                 className={({ isActive }) =>
                   isActive ? activeStyles : baseStyles
                 }
@@ -52,6 +53,7 @@ const Navbar = () => {
         <div className="md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 space-y-2 space-x-4 text-center">
           {navLinks.map((item) => (
             <NavLink
+              key={item.to}
               className={({ isActive }) =>
                 isActive ? activeStyles : baseStyles
               }
