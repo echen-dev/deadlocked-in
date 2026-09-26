@@ -8,7 +8,11 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
       to={`/heroes/${hero.id}`}
     >
       <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-sm transition hover:shadow-md flex">
-        <img src={hero.image} alt={hero.name} className=" h-50 object-cover" />
+        <img
+          src={hero.image}
+          alt={hero.name}
+          className=" w-30 md:w-fit sm:h-50 object-cover"
+        />
         <div className="p-5 my-auto">
           <h3 className="text-3xl font-semibold text-blue-400 mb-1">
             {hero.name}
