@@ -17,7 +17,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
           <div className="text-sm text-gray-400 mb-2">
             Release Date: {new Date(hero.releaseDate).toLocaleDateString()}
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-1">
             {hero.description.split(" ").map((descriptor) => (
               <div key={descriptor} className="bg-blue-600 rounded px-2">
                 {descriptor}

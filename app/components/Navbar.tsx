@@ -6,6 +6,12 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const baseStyles = "transition hover:text-blue-400";
   const activeStyles = "text-blue-400 font-semibold";
+  const navLinks = [
+    { label: "Home", to: "/" },
+    { label: "Heroes", to: "/heroes" },
+    { label: "Guides", to: "/guides" },
+    { label: "Contact", to: "/contact" },
+  ];
   return (
     <nav className="bg-gray-800 border-b border-gray-700 shadow-md sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -19,46 +25,16 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           <div className="space-x-4 text-sm text-gray-300">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? activeStyles : baseStyles
-              }
-              to="/"
-            >
-              Home
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? activeStyles : baseStyles
-              }
-              to="/heroes"
-            >
-              Heroes
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? activeStyles : baseStyles
-              }
-              to="/guides"
-            >
-              Guides
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? activeStyles : baseStyles
-              }
-              to="/about"
-            >
-              About
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? activeStyles : baseStyles
-              }
-              to="/contact"
-            >
-              Contact
-            </NavLink>
+            {navLinks.map((item) => (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? activeStyles : baseStyles
+                }
+                to={item.to}
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </div>
         </div>
 
@@ -74,41 +50,17 @@ const Navbar = () => {
       {/*Mobile Navigation*/}
       {menuOpen && (
         <div className="md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 space-y-2 space-x-4 text-center">
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
-            to="/"
-            onClick={() => setMenuOpen(false)}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
-            to="/heroes"
-            onClick={() => setMenuOpen(false)}
-          >
-            Heroes
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
-            to="/guides"
-            onClick={() => setMenuOpen(false)}
-          >
-            Guides
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
-            to="/about"
-            onClick={() => setMenuOpen(false)}
-          >
-            About
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyles : baseStyles)}
-            to="/contact"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact
-          </NavLink>
+          {navLinks.map((item) => (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? activeStyles : baseStyles
+              }
+              to={item.to}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </NavLink>
+          ))}
         </div>
       )}
     </nav>
