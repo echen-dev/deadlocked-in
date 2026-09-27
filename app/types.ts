@@ -8,3 +8,11 @@ export type Hero = {
   releaseDate: string;
   featured: boolean;
 };
+
+export type PostMeta = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+};
