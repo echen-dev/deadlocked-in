@@ -5,7 +5,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
   return (
     <Link
       className="block transform transition duration-300 hover:scale-105"
-      to={`/heroes/${hero.id}`}
+      to={`/heroes/${hero.documentId}`}
     >
       <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-sm transition hover:shadow-md flex">
         <img

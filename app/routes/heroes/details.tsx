@@ -1,26 +1,37 @@
 import type { Route } from "./+types/details";
-import type { Hero } from "~/types";
+import type { Hero, StrapiHero, StrapiResponse } from "~/types";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
 
-export async function clientLoader({
-  request,
-  params,
-}: Route.ClientLoaderArgs): Promise<Hero> {
+export async function loader({ request, params }: Route.LoaderArgs) {
+  const { id } = params;
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/heroes/${params.id}`,
+    `${import.meta.env.VITE_API_URL}/heroes?filters[documentId][$eq]=${id}&populate=*`,
   );
   if (!res.ok) throw new Response("Hero not found", { status: 404 });
-  const hero: Hero = await res.json();
-  return hero;
-}
+  const json: StrapiResponse<StrapiHero> = await res.json();
 
-export function HydrateFallback() {
-  return <div>Loading...</div>;
+  const item = json.data[0];
+
+  const hero: Hero = {
+    id: item.id,
+    documentId: item.documentId,
+    name: item.name,
+    description: item.description,
+    role: item.role,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
+      : "/images/no-image.png",
+    url: item.url,
+    releaseDate: item.releaseDate,
+    featured: item.featured,
+  };
+
+  return { hero };
 }
 
 const HeroDetailsPage = ({ loaderData }: Route.ComponentProps) => {
-  const hero = loaderData;
+  const { hero } = loaderData;
   return (
     <>
       <Link
@@ -44,11 +55,11 @@ const HeroDetailsPage = ({ loaderData }: Route.ComponentProps) => {
             Release Date: {new Date(hero.releaseDate).toLocaleDateString()}
           </p>
           <div className="flex gap-2 mb-6">
-            {hero.description.split(" ").map((descriptor) => (
+            {/* {hero.description.split(" ").map((descriptor) => (
               <div key={descriptor} className="bg-blue-600 rounded px-2">
                 {descriptor}
               </div>
-            ))}
+            ))} */}
           </div>
           <Link
             to={"/guides"}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Route } from "./+types/index";
-import type { Hero } from "~/types";
+import type { Hero, StrapiHero, StrapiResponse } from "~/types";
 import HeroCard from "~/components/HeroCard";
 import Pagination from "~/components/Pagination";
 import { AnimatePresence, motion } from "motion/react";
@@ -15,9 +15,22 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ heroes: Hero[] }> {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/heroes`);
-  const data = await res.json();
-  return { heroes: data };
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/heroes?populate=*`);
+  const json: StrapiResponse<StrapiHero> = await res.json();
+  const heroes = json.data.map((item) => ({
+    id: item.id,
+    documentId: item.documentId,
+    name: item.name,
+    description: item.description,
+    role: item.role,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
+      : "/images/no-image.png",
+    url: item.url,
+    releaseDate: item.releaseDate,
+    featured: item.featured,
+  }));
+  return { heroes };
 }
 
 const HeroesPage = ({ loaderData }: Route.ComponentProps) => {
