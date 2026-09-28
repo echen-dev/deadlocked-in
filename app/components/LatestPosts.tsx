@@ -19,7 +19,7 @@ const LatestPosts = ({ posts, limit = 3 }: LatestPostsProps) => {
           <Link
             key={post.slug}
             to={`/guides/${post.slug}`}
-            className="block p-4 border border-gray-700 rounded-lg bg-gray-800 hover:shadow-md transition"
+            className="block p-4 border border-gray-700 rounded-lg bg-gray-800 hover:shadow-md transition transform duration-300 hover:scale-105"
           >
             <h3 className="text-lg font-semibold text-blue-400 mb-1">
               {post.title}
