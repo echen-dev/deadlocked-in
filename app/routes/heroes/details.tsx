@@ -19,9 +19,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     name: item.name,
     description: item.description,
     role: item.role,
-    image: item.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
-      : "/images/no-image.png",
+    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
     url: item.url,
     releaseDate: item.releaseDate,
     featured: item.featured,
@@ -55,11 +53,11 @@ const HeroDetailsPage = ({ loaderData }: Route.ComponentProps) => {
             Release Date: {new Date(hero.releaseDate).toLocaleDateString()}
           </p>
           <div className="flex gap-2 mb-6">
-            {/* {hero.description.split(" ").map((descriptor) => (
+            {hero.description.split(" ").map((descriptor) => (
               <div key={descriptor} className="bg-blue-600 rounded px-2">
                 {descriptor}
               </div>
-            ))} */}
+            ))}
           </div>
           <Link
             to={"/guides"}
