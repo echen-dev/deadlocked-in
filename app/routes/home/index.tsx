@@ -43,6 +43,7 @@ export async function loader({
     url: item.url,
     releaseDate: item.releaseDate,
     featured: item.featured,
+    rank: item.rank,
   }));
 
   const posts = postJson.data.map((item) => ({

@@ -23,6 +23,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     url: item.url,
     releaseDate: item.releaseDate,
     featured: item.featured,
+    rank: item.rank,
   };
 
   return { hero };
