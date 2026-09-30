@@ -10,6 +10,7 @@ const Navbar = () => {
     { label: "Home", to: "/" },
     { label: "Heroes", to: "/heroes" },
     { label: "Guides", to: "/guides" },
+    { label: "Tier List", to: "/tier-list" },
     { label: "Contact", to: "/contact" },
   ];
   return (

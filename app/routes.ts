@@ -13,6 +13,7 @@ export default [
     route("heroes/:id", "./routes/heroes/details.tsx"),
     route("guides", "./routes/guides/index.tsx"),
     route("guides/:slug", "./routes/guides/details.tsx"),
+    route("/tier-list", "./routes/tier-list/index.tsx"),
     route("*", "./routes/errors/not-found.tsx"),
   ]),
 ] satisfies RouteConfig;

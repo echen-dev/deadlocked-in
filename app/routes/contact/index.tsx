@@ -1,5 +1,12 @@
 import type { Route } from "./+types";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Deadlocked In | Contact" },
+    { name: "description", content: "Learn more about the heroes of Deadlock" },
+  ];
+}
+
 const ContactPage = () => {
   return (
     <div className="max-w-3xl mx-auto mt-12 px-6 py-8 bg-gray-900 text-center">

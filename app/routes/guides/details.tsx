@@ -3,6 +3,13 @@ import type { Post, StrapiResponse, StrapiPost } from "~/types";
 import ReactMarkDown from "react-markdown";
 import { Link } from "react-router";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Deadlocked In | Guides" },
+    { name: "description", content: "Learn more about the heroes of Deadlock" },
+  ];
+}
+
 export async function loader({ request, params }: Route.LoaderArgs) {
   const { slug } = params;
   const res = await fetch(

@@ -5,6 +5,13 @@ import { useState } from "react";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Deadlocked In | Guides" },
+    { name: "description", content: "Learn more about the heroes of Deadlock" },
+  ];
+}
+
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ posts: Post[] }> {

@@ -8,6 +8,7 @@ export type Hero = {
   url: string;
   releaseDate: string;
   featured: boolean;
+  rank: string;
 };
 
 export type Post = {
@@ -42,6 +43,7 @@ export type StrapiHero = {
   url: string;
   releaseDate: string;
   featured: boolean;
+  rank: string;
 };
 
 export type StrapiPost = {
