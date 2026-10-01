@@ -14,6 +14,7 @@ export default [
     route("guides", "./routes/guides/index.tsx"),
     route("guides/:slug", "./routes/guides/details.tsx"),
     route("/tier-list", "./routes/tier-list/index.tsx"),
+    route("/tier-list/builder", "./routes/tier-list/builder.tsx"),
     route("*", "./routes/errors/not-found.tsx"),
   ]),
 ] satisfies RouteConfig;

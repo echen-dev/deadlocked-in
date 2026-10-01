@@ -1,5 +1,6 @@
 import type { StrapiHero, StrapiResponse, Hero } from "~/types";
 import type { Route } from "./+types";
+import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -35,9 +36,16 @@ const TierListPage = ({ loaderData }: Route.ComponentProps) => {
     <div className="max-w-3xl mx-auto p-6 bg-gray-900">
       <h2 className="text-3xl font-bold text-white mb-2">Deadlock Tier List</h2>
       <p className="text-sm text-gray-400 mb-2">Last updated: 9/30/2026</p>
-      <p className="text-sm text-gray-400 mb-6">
+      <p className="text-sm text-gray-400 mb-2">
         38 Heroes ranked from S to D tier for ranked
       </p>
+      <span className="text-sm text-gray-400">Want to build your own? </span>
+      <Link
+        className="inline-block text-sm text-blue-400 rounded transition mb-4 hover:underline"
+        to="/tier-list/builder"
+      >
+        To Tier Builder →
+      </Link>
       <section className="block">
         <div className="grid gap-2">
           <div className="border border-gray-700 shadow-sm rounded-lg overflow-hidden grid grid-cols-[112px_1fr]">
@@ -48,9 +56,12 @@ const TierListPage = ({ loaderData }: Route.ComponentProps) => {
               {heroes
                 .filter((hero) => hero.rank === "S")
                 .map((hero) => (
-                  <div>
-                    <img src={hero.image} alt={hero.name} className="h-20" />
-                  </div>
+                  <img
+                    key={hero.name}
+                    src={hero.image}
+                    alt={hero.name}
+                    className="h-20"
+                  />
                 ))}
             </div>
           </div>
@@ -62,9 +73,12 @@ const TierListPage = ({ loaderData }: Route.ComponentProps) => {
               {heroes
                 .filter((hero) => hero.rank === "A")
                 .map((hero) => (
-                  <div>
-                    <img src={hero.image} alt={hero.name} className="h-20" />
-                  </div>
+                  <img
+                    key={hero.name}
+                    src={hero.image}
+                    alt={hero.name}
+                    className="h-20"
+                  />
                 ))}
             </div>
           </div>
@@ -76,9 +90,12 @@ const TierListPage = ({ loaderData }: Route.ComponentProps) => {
               {heroes
                 .filter((hero) => hero.rank === "B")
                 .map((hero) => (
-                  <div>
-                    <img src={hero.image} alt={hero.name} className="h-20" />
-                  </div>
+                  <img
+                    key={hero.name}
+                    src={hero.image}
+                    alt={hero.name}
+                    className="h-20"
+                  />
                 ))}
             </div>
           </div>
@@ -90,9 +107,12 @@ const TierListPage = ({ loaderData }: Route.ComponentProps) => {
               {heroes
                 .filter((hero) => hero.rank === "C")
                 .map((hero) => (
-                  <div>
-                    <img src={hero.image} alt={hero.name} className="h-20" />
-                  </div>
+                  <img
+                    key={hero.name}
+                    src={hero.image}
+                    alt={hero.name}
+                    className="h-20"
+                  />
                 ))}
             </div>
           </div>
@@ -104,9 +124,12 @@ const TierListPage = ({ loaderData }: Route.ComponentProps) => {
               {heroes
                 .filter((hero) => hero.rank === "D")
                 .map((hero) => (
-                  <div>
-                    <img src={hero.image} alt={hero.name} className="h-20" />
-                  </div>
+                  <img
+                    key={hero.name}
+                    src={hero.image}
+                    alt={hero.name}
+                    className="h-20"
+                  />
                 ))}
             </div>
           </div>
