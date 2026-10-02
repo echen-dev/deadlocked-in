@@ -60,7 +60,8 @@ const TierBuilderPage = ({ loaderData }: Route.ComponentProps) => {
               >
                 {tier !== "X" ? (
                   <div
-                    className={`flex flex-col justify-center items-center py-4`}
+                    className={`flex flex-col justify-center items-center py-4 ${tier === "S" && "bg-red-300"} ${tier === "A" && "bg-orange-300"} ${tier === "B" && "bg-yellow-300"} ${tier === "C" && "bg-green-300"} 
+                    ${tier === "D" && "bg-gray-300"}`}
                   >
                     <h3 className="text-3xl font-bold">{tier}</h3>
                   </div>
