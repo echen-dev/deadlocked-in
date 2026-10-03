@@ -16,7 +16,7 @@ export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ heroes: Hero[] }> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/heroes?populate=*&pagination[pageSize]=38`,
+    `${import.meta.env.VITE_API_URL}/heroes?populate=*&pagination[pageSize]=39&sort=name:asc`,
   );
   const json: StrapiResponse<StrapiHero> = await res.json();
   const heroes = json.data.map((item) => ({

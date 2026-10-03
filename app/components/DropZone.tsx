@@ -16,7 +16,7 @@ const DropZone = ({
   return (
     <div
       ref={ref}
-      className="flex flex-wrap justify-items-start overflow-x-hidden gap-2 p-2 min-h-20"
+      className={`flex flex-wrap justify-items-start overflow-x-hidden gap-2 p-2 min-h-20 ${isDropTarget ? "border-2 border-blue-400" : ""}`}
     >
       {children}
     </div>
